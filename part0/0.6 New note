@@ -1,0 +1,10 @@
+note over browser:
+user types a note in the text box and clicks the 'Save' button
+The form calls a javascript function that formats the data for the new note and sends it to the server
+end note
+browser->server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note {content: "hello", date: "2022-08-19T18:17:42.764Z"}
+server-->browser: 201 {message: "note reated"}
+
+note over server:
+The server responds with a message confirming the note was created successfully
+end note

@@ -1,0 +1,30 @@
+note over browser:
+user types a note in the text box and clicks the 'Save' button
+The note information is sent in the body of the post request based on the for actions in the HTML
+end note
+browser->server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note [note=hello]
+server-->browser: 302 URL redirect
+
+note over server:
+Server code creates a new note object based on the data in the body of the POST request
+[{content:hello, date: new Date()}]
+end note
+
+note over browser:
+the URL redirect causes the browser to reload the Notes page
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+server-->browser: HTML-code
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+server-->browser: main.js
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server-->browser: data.json [{content:hello, date: new Date()}]
+
+note over server:
+The server does not save new notes to a database
+Notes disappear when the browser is refreshed
+end note
+

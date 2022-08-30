@@ -1,6 +1,6 @@
 const Course = ({course}) => 
 
-  <div key={course.id}>
+  <>
       <h1>{course.name}</h1>
       {course.parts.map(
         part => 
@@ -8,7 +8,7 @@ const Course = ({course}) =>
       )}
        
       <p>total of {course.parts.reduce((a,part) => a = a+part.exercises, 0)} exercises</p> 
-  </div>
+  </>
 
 
 const App = () => {
@@ -61,7 +61,7 @@ const App = () => {
     <div>
     {courses.map(
         course => 
-         <Course course={course} />
+        <div key={course.id}><Course course={course} /></div>
       )}
     </div>
   )

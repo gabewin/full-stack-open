@@ -3,6 +3,16 @@ sequenceDiagram
     participant browser
     participant server
 
+    Note right of browser: The user enters "howdy" in the text field and clicks save
+
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note { "note": "howdy"}
+    activate server
+    server-->>browser: 302 Redirect
+    deactivate server
+
+    Note right of server: The server adds the new note to the notes array
+    Note right of browser: The browser executes the redirect
+
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
     activate server
     server-->>browser: HTML document
